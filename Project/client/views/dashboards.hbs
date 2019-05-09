@@ -1,0 +1,163 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link rel='stylesheet' href='/stylesheets/dashboards.css' />
+<h1>File Tracking System</h1>
+<div class="form-modal">
+
+    <div class="form-toggle">
+        <button id="clerk-toggle" onclick="toggleClerk()">Clerk</button>
+        <button id="sect-toggle" onclick="toggleSection()">Section Officer</button>
+        <button id="admin-toggle" onclick="toggleAdmin()">Adminstrative Assistant</button>
+        <button id="sec-toggle" onclick="toggleSec()">Secretary</button>
+
+    </div>
+
+    <div id="clerk-form">
+        <form id="clerkform">
+            <input type="text" id="clerkPrivKey" placeholder="Enter private key" />
+            <table>
+                        <tr>
+                            <td><input id="Filenum" type="text" placeholder="Enter File Number"/></td>
+                        </tr>
+                        <tr>
+                            <td><input id="topic" type="text" placeholder="Topic"/></td>
+                            <td><input id="doc" type="text" onfocus="(this.type='date')" placeholder="Date of Creation"/></td>
+                            
+                        </tr>
+            </table>
+            <button type="button" onclick="createFileasClerk(event)" class="btn login">Add New File</button>
+            
+        </form>
+
+    </div>
+
+    <div id="sect-form">
+        <form id="sectform">
+            <input id="sectPrivKey"type="text" placeholder="Enter private key" />
+            <table>
+                        <tr>
+                            <td><input id="Filenum2" type="text" placeholder="Enter File Number"/></td>
+                        </tr>
+                        <tr>
+                            <td><input id="dom2" type="text" onfocus="(this.type='date')" placeholder="Date of Modification"/></td>
+                        </tr>
+                    </table>
+            <button type="button" onclick="transferFileasSection(event)" class="btn signup">Transfer File</button>     
+        </form>
+    </div> 
+
+    <div id="admin-form">
+        <form id="adminform">
+            <input id="adminPrivKey"type="text" placeholder="Enter private key" />
+            <table>
+                        <tr>
+                            <td><input id="Filenum3" type="text" placeholder="Enter File Number"/></td>
+                        </tr>
+                        <tr>
+                            <td><input id="dom3" type="text" onfocus="(this.type='date')" placeholder="Date of Modification"/></td>
+                        </tr>
+                    </table>
+            <button type="button" onclick="transferFileasAdmin(event)" class="btn signup">Transfer File</button>     
+        </form>
+    </div> 
+
+    <div id="sec-form">
+        <form id="secform">
+            <input id="secPrivKey"type="text" placeholder="Enter private key" />
+            <table>
+                        <tr>
+                            <td><input id="Filenum4" type="text" placeholder="Enter File Number"/></td>
+                        </tr>
+                        <tr>
+                            <td><input id="dom4" type="text" onfocus="(this.type='date')" placeholder="Date of Modification"/></td>
+                        </tr>
+                    </table>
+            <button type="button" onclick="transferFileasSec(event)" class="btn signup">Issue Govt.Order</button>
+            <button type="button" onclick="deleteFile(event)" class="btn signup">Delete File</button> 
+
+        </form>
+     </div>  
+   
+    <a class="nav-link" id="list" href="/listFiles"><h3>List File Details</h3> </a>
+
+</div>
+
+
+<script>
+    
+    function toggleClerk() {
+        document.getElementById('sectform').reset();
+        document.getElementById('adminform').reset();
+        document.getElementById('secform').reset();
+        document.getElementById("sect-toggle").style.backgroundColor = "#fff";
+        document.getElementById("sect-toggle").style.color = "#222";
+        document.getElementById("sec-toggle").style.backgroundColor = "#fff";
+        document.getElementById("sec-toggle").style.color = "#222";
+        document.getElementById("admin-toggle").style.backgroundColor = "#fff";
+        document.getElementById("admin-toggle").style.color = "#222";
+        document.getElementById("clerk-toggle").style.backgroundColor = "#a133cc";
+        document.getElementById("clerk-toggle").style.color = "#fff";
+        document.getElementById("sect-form").style.display = "none";
+        document.getElementById("sec-form").style.display = "none";
+        document.getElementById("admin-form").style.display = "none";
+        document.getElementById("clerk-form").style.display = "block";
+
+       }
+
+    function toggleSection() {
+        document.getElementById('clerkform').reset();
+        document.getElementById('adminform').reset();
+        document.getElementById('secform').reset();
+        document.getElementById("clerk-toggle").style.backgroundColor = "#fff";
+        document.getElementById("clerk-toggle").style.color = "#222";
+        document.getElementById("sec-toggle").style.backgroundColor = "#fff";
+        document.getElementById("sec-toggle").style.color = "#222";
+        document.getElementById("admin-toggle").style.backgroundColor = "#fff";
+        document.getElementById("admin-toggle").style.color = "#222";
+        document.getElementById("sect-toggle").style.backgroundColor = "#a133cc";
+        document.getElementById("sect-toggle").style.color = "#fff";
+        document.getElementById("clerk-form").style.display = "none";
+        document.getElementById("sec-form").style.display = "none";
+        document.getElementById("admin-form").style.display = "none";
+        document.getElementById("sect-form").style.display = "block";
+
+    }
+
+     function toggleAdmin() {
+        document.getElementById('sectform').reset();
+        document.getElementById('clerkform').reset();
+        document.getElementById('secform').reset();
+        document.getElementById("sect-toggle").style.backgroundColor = "#fff";
+        document.getElementById("sect-toggle").style.color = "#222";
+        document.getElementById("sec-toggle").style.backgroundColor = "#fff";
+        document.getElementById("sec-toggle").style.color = "#222";
+        document.getElementById("clerk-toggle").style.backgroundColor = "#fff";
+        document.getElementById("clerk-toggle").style.color = "#222";
+        document.getElementById("admin-toggle").style.backgroundColor = "#a133cc";
+        document.getElementById("admin-toggle").style.color = "#fff";
+        document.getElementById("sect-form").style.display = "none";
+        document.getElementById("sec-form").style.display = "none";
+        document.getElementById("clerk-form").style.display = "none";
+        document.getElementById("admin-form").style.display = "block";
+        
+     }
+     function toggleSec() {
+        document.getElementById('sectform').reset();
+        document.getElementById('adminform').reset();
+        document.getElementById('clerkform').reset();
+        document.getElementById("sect-toggle").style.backgroundColor = "#fff";
+        document.getElementById("sect-toggle").style.color = "#222";
+        document.getElementById("clerk-toggle").style.backgroundColor = "#fff";
+        document.getElementById("clerk-toggle").style.color = "#222";
+        document.getElementById("admin-toggle").style.backgroundColor = "#fff";
+        document.getElementById("admin-toggle").style.color = "#222";
+        document.getElementById("sec-toggle").style.backgroundColor = "#a133cc";
+        document.getElementById("sec-toggle").style.color = "#fff";
+        document.getElementById("sect-form").style.display = "none";
+        document.getElementById("clerk-form").style.display = "none";
+        document.getElementById("admin-form").style.display = "none";
+        document.getElementById("sec-form").style.display = "block";
+       
+    }
+
+</script>
+<script src='/javascripts/main.js'></script>
